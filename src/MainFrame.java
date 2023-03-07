@@ -1,18 +1,18 @@
-package src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.File;
 
-public class MainFrame {
+public class MainFrame{
     private JFrame frame = new JFrame("CoffeeMachine");
     private Color color = new Color(226,218,196,255);
     public MainFrame(){
-        setFirstPage(frame);
+        setFirstPage();
         createJFrame();
-
 
     }
     private void createJFrame(){
@@ -23,12 +23,12 @@ public class MainFrame {
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                setTitleCenter(frame);
+                setTitleCenter();
             }
         });
 
     }
-    private void setTitleCenter(JFrame frame){
+    private void setTitleCenter(){
         Font font = frame.getFont();
         String currentTitle = frame.getTitle().trim();
         FontMetrics fm = frame.getFontMetrics(font);
@@ -42,22 +42,34 @@ public class MainFrame {
         frame.setTitle(pad + currentTitle);
 
     }
+    private void showTurtle(){
+        ImageFiles image = new ImageFiles();
+        JPanel panelShowIcon = new JPanel();
+        JLabel turtle = new JLabel(image.getTurtle());
+        JLabel label1 = new JLabel("TAOJOM");
+        panelShowIcon.setLayout(new BoxLayout(panelShowIcon,BoxLayout.Y_AXIS));
+        panelShowIcon.add(turtle);
+        panelShowIcon.add(label1);
+        frame.add(panelShowIcon);
+    }
 
-    private void setFirstPage(JFrame frame){
+    private void setFirstPage(){
+        showTurtle();
         ButtonStyle button = new ButtonStyle();
         ImageFiles image = new ImageFiles();
+
+
         JPanel panel = new JPanel();
-        JLabel label = new JLabel(image.getTurtle(),JLabel.CENTER);
-        JLabel label1 = new JLabel("TAOJOM");
-        panel.add(label1);
         panel.add(image.getLatteLabel());
         panel.add(image.getCapuccino());
-        panel.add(image.getEspresso());
         frame.add(panel);
+        frame.add(button.buyButton());
     }
 
 
     public static void main(String[] args){
         new MainFrame();
     }
+
+
 }
