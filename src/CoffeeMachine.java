@@ -1,7 +1,10 @@
+import javax.swing.*;
 import java.util.Scanner;
 
 
 public class CoffeeMachine {
+    public CoffeeMachine() {
+    }
     enum Coffee { ESPRESSO, LATTE, CAPPUCCINO }
     static final int ESPRESSO_WATER_ML_PER_CUP = 250;
     static final int ESPRESSO_MILK_ML_PER_CUP = 0;
@@ -20,6 +23,11 @@ public class CoffeeMachine {
     private int beans;
     private int cups;
     private int cash;
+
+    private int price;
+
+    private String typeCoffee;
+
     private static final Scanner scanner = new Scanner(System.in);
     
     CoffeeMachine(int water, int milk, int beans, int cups, int cash) {
@@ -115,8 +123,6 @@ public class CoffeeMachine {
     public int getCAPPUCCINO_PRICE(){
         return this.CAPPUCCINO_PRICE;
     }
-
-
     public int getWater(){
         return this.water;
     }
@@ -135,6 +141,25 @@ public class CoffeeMachine {
 
     public int getCash(){
         return this.cash;
+    }
+
+    public int getPrice(){
+        return this.price;
+    }
+
+    public Coffee getCoffee(){
+        for (Coffee type : Coffee.values()) {
+            if(type.toString().equals(typeCoffee)){
+                return type;
+            }
+        }
+        return null;
+    }
+    public void setPrice(int price){
+        this.price = price;
+    }
+    public void setCoffee(String coffee){
+       this.typeCoffee = coffee;
     }
 
     public void setWater(int water){
