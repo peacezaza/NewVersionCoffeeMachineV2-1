@@ -16,7 +16,7 @@ public class MainFrame{
 
     }
     private void createJFrame(){
-        frame.setSize(350,370);
+        frame.setSize(350,400);
         frame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -26,7 +26,6 @@ public class MainFrame{
                 setTitleCenter();
             }
         });
-
     }
     private void setTitleCenter(){
         Font font = frame.getFont();
@@ -54,17 +53,29 @@ public class MainFrame{
     }
 
     private void setFirstPage(){
-        showTurtle();
         ButtonStyle button = new ButtonStyle();
+        CheckBoxes checkBoxes = new CheckBoxes();
         ImageFiles image = new ImageFiles();
-
-
         JPanel panel = new JPanel();
+        JPanel checkBoxesPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        showTurtle();
         panel.add(image.getLatteLabel());
         panel.add(image.getCapuccino());
+        panel.add(image.getEspresso());
+        checkBoxesPanel.add(checkBoxes.createCheckBox1());
+        checkBoxesPanel.add(checkBoxes.createCheckBox2());
+        checkBoxesPanel.add(checkBoxes.createCheckBox3());
+        buttonPanel.add(button.buyButton());
+        buttonPanel.add(button.fillButton());
         frame.add(panel);
-        frame.add(button.buyButton());
+        frame.add(checkBoxesPanel);
+        frame.add(buttonPanel);
     }
+    private void setSizePage(){
+        
+    }
+
 
 
     public static void main(String[] args){
