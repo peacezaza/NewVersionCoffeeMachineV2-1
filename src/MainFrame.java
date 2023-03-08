@@ -16,6 +16,7 @@ public class MainFrame{
     }
     private void createJFrame(){
         frame.setSize(350,380);
+        frame.getContentPane().setBackground(color);
         frame.setResizable(false);
         frame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
