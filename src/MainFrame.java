@@ -169,9 +169,6 @@ public class MainFrame{
 //        Create Object
         ButtonStyle button = new ButtonStyle();
 
-
-
-
 //        Create panel
         JPanel panelForBackButton = new JPanel();
 
