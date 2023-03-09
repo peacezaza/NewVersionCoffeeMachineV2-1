@@ -60,6 +60,7 @@ public class ButtonStyle{
         sizeSButton.setIcon(image.getSizeS());
         sizeSButton.setBorder(emptyBorder);
         sizeSButton.setBackground(color);
+        sizeSButton.addActionListener();
 
         return sizeSButton;
     }
