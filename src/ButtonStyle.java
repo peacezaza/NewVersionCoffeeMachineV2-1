@@ -1,12 +1,8 @@
-
-
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.jar.JarEntry;
 
 public class ButtonStyle{
     private ImageFiles image = new ImageFiles();
@@ -29,14 +25,20 @@ public class ButtonStyle{
         return backButton;
     }
 
-    public JButton buyButton(JPanel panel, JPanel panelForSelectionSizePage){
+    public JButton buyButton(JPanel panel, JPanel panelForSelectionSizePage,CheckBoxes checkBoxes){
             JButton button = new JButton();
             button.setText("BUY");
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    panel.setVisible(false);
-                    panelForSelectionSizePage.setVisible(true);
+                    if(checkBoxes.checkBox1.isSelected() || checkBoxes.checkBox2.isSelected() || checkBoxes.checkBox3.isSelected()){
+                        panel.setVisible(false);
+                        panelForSelectionSizePage.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(panel, "Please, Select one of the option", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+
                 }
             });
             return button;

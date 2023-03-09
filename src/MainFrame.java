@@ -94,7 +94,7 @@ public class MainFrame{
         panelForCheckBoxes.add(checkBoxes.createCheckBox2());
         panelForCheckBoxes.add(checkBoxes.createCheckBox3());
         panelForCheckBoxes.add(Box.createRigidArea(new Dimension(0,60)));
-        panelForButton.add(buttonStyle.buyButton(panelForHoldEveryElementInFirstPage, SizePageMain));
+        panelForButton.add(buttonStyle.buyButton(panelForHoldEveryElementInFirstPage, SizePageMain, checkBoxes));
         panelForButton.add(buttonStyle.fillButton(panelForHoldEveryElementInFillPage,panelForHoldEveryElementInFirstPage));
 
 
@@ -113,25 +113,39 @@ public class MainFrame{
         frame.add(panelForHoldEveryElementInFirstPage);
     }
     private void setSelectSizePage(){
+//        Create Object
         CoffeeMachine coffee = new CoffeeMachine();
         ButtonStyle buttonStyle = new ButtonStyle();
+
+//        Create Panel
         JPanel SizeSelectPanel = new JPanel();
         JPanel BackPanel = new JPanel();
         JPanel priceMainPanel = new JPanel();
         JPanel priceShowPanel = new JPanel();
         JPanel buyCoffeeButton = new JPanel();
+
+//        Create Label
         JLabel priceText = new JLabel("Price");
         JLabel price = new JLabel("฿ " + coffee.getPrice());
+
+
+//        Set Layout for panel
         SizeSelectPanel.setLayout(new FlowLayout());
         SizePageMain.setLayout(new BoxLayout(SizePageMain,BoxLayout.Y_AXIS));
         priceShowPanel.setLayout(new BoxLayout(priceShowPanel ,BoxLayout.Y_AXIS));
         priceMainPanel.setLayout(new BoxLayout(priceMainPanel ,BoxLayout.X_AXIS));
+
+
+//        Set Background for panel
         priceMainPanel.setBackground(color);
         buyCoffeeButton.setBackground(color);
         priceMainPanel.setBackground(color);
+
+
+//        Add Button to the Panel
         SizeSelectPanel.add(buttonStyle.SizeSButton());
-        SizeSelectPanel.add(buttonStyle.SizeSButton());
-        SizeSelectPanel.add(buttonStyle.SizeSButton());
+        SizeSelectPanel.add(buttonStyle.SizeMButton());
+        SizeSelectPanel.add(buttonStyle.SizeLButton());
         BackPanel.add(buttonStyle.backButton(panelForHoldEveryElementInFirstPage, SizePageMain, panelForHoldEveryElementInFillPage));
         priceShowPanel.add(priceText);
         priceShowPanel.add(Box.createRigidArea(new Dimension(0,15)));
@@ -140,6 +154,9 @@ public class MainFrame{
         priceMainPanel.add(priceShowPanel);
         priceMainPanel.add(Box.createRigidArea(new Dimension(210,0)));
         priceMainPanel.add(buyCoffeeButton);
+
+
+//        Add Panel to main panel
         SizePageMain.add(SizeSelectPanel);
         SizePageMain.add(BackPanel);
         SizePageMain.add(priceMainPanel);
