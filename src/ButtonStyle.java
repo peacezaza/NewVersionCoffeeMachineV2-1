@@ -1,46 +1,54 @@
 
+
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.jar.JarEntry;
+
 public class ButtonStyle{
     private ImageFiles image = new ImageFiles();
     private Border emptyBorder = BorderFactory.createEmptyBorder();
 
     private Color color = new Color(226,218,196,255);
 
-    public JButton backButton(JPanel panel){
+    public JButton backButton(JPanel showPanel, JPanel hidePanel1, JPanel hidePanel2){
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.setVisible(true);
+                showPanel.setVisible(true);
+                hidePanel1.setVisible(false);
+                hidePanel2.setVisible(false);
+
 
             }
         });
         return backButton;
     }
 
-    public JButton buyButton(JPanel panel){
+    public JButton buyButton(JPanel panel, JPanel panelForSelectionSizePage){
             JButton button = new JButton();
             button.setText("BUY");
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     panel.setVisible(false);
+                    panelForSelectionSizePage.setVisible(true);
                 }
             });
             return button;
         }
-    public JButton fillButton(JPanel panel){
+    public JButton fillButton(JPanel showPanel, JPanel hidePanel1){
         JButton fillbutton = new JButton();
         fillbutton.setText("Fill");
         fillbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("lulululul");
-                panel.setVisible(false);
+                showPanel.setVisible(true);
+                hidePanel1.setVisible(false);
             }
         });
         return fillbutton;
