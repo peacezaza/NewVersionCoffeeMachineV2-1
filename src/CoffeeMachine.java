@@ -1,7 +1,3 @@
-import javax.swing.*;
-import java.util.Scanner;
-
-
 public class CoffeeMachine {
     public CoffeeMachine() {
     }
@@ -18,18 +14,18 @@ public class CoffeeMachine {
     static final int CAPPUCCINO_MILK_ML_PER_CUP = 100;
     static final int CAPPUCCINO_BEANS_G_PER_CUP = 12;
     static final int CAPPUCCINO_PRICE = 6;
+    static final int SIZE_S_PRICR = 0;
+    static final int SIZE_M_PRICR = 5;
+    static final int SIZE_L_PRICR = 10;
     private int water;
     private int milk;
     private int beans;
     private int cups;
     private int cash;
-
     private int price;
-
+    private int finalprice;
+    private int presentSize;
     private String typeCoffee;
-
-    private static final Scanner scanner = new Scanner(System.in);
-    
     CoffeeMachine(int water, int milk, int beans, int cups, int cash) {
         this.water = water;
         this.milk = milk;
@@ -38,11 +34,49 @@ public class CoffeeMachine {
         this.cash = cash;
     }
 
+
     boolean canMakeCoffee(int waterNeeded, int milkNeeded, int beansNeeded) {
         return water >= waterNeeded &&
                 milk >= milkNeeded &&
                 beans >= beansNeeded &&
                 cups >= 1;
+    }
+    public void EspressoNeed() {
+        canMakeCoffee(getESPRESSO_WATER_ML_PER_CUP(),
+                getESPRESSO_MILK_ML_PER_CUP(),
+                getESPRESSO_BEANS_G_PER_CUP());
+    }
+
+    public void LatteNeed() {
+        canMakeCoffee(getLATTE_WATER_ML_PER_CUP(),
+                getLATTE_MILK_ML_PER_CUP(),
+                getLATTE_BEANS_G_PER_CUP());
+    }
+
+    public void CappuccinoNeed() {
+        canMakeCoffee(getCAPPUCCINO_WATER_ML_PER_CUP(),
+                getCAPPUCCINO_MILK_ML_PER_CUP(),
+                getCAPPUCCINO_BEANS_G_PER_CUP());
+    }
+    public void makeEspresso() {
+        useRawMaterials(getESPRESSO_WATER_ML_PER_CUP(),
+                getESPRESSO_MILK_ML_PER_CUP(),
+                getESPRESSO_BEANS_G_PER_CUP(),
+                getFinalprice());
+    }
+
+    public void makeLatte() {
+        useRawMaterials(getLATTE_WATER_ML_PER_CUP(),
+                getLATTE_MILK_ML_PER_CUP(),
+                getLATTE_BEANS_G_PER_CUP(),
+                getFinalprice());
+    }
+
+    public void makeCappuccino() {
+        useRawMaterials(getCAPPUCCINO_WATER_ML_PER_CUP(),
+                getCAPPUCCINO_MILK_ML_PER_CUP(),
+                getCAPPUCCINO_BEANS_G_PER_CUP(),
+                getFinalprice());
     }
 
     public void useRawMaterials(int waterNeeded, int milkNeeded, int beansNeeded, int price){
@@ -123,6 +157,7 @@ public class CoffeeMachine {
     public int getCAPPUCCINO_PRICE(){
         return this.CAPPUCCINO_PRICE;
     }
+
     public int getWater(){
         return this.water;
     }
@@ -147,6 +182,26 @@ public class CoffeeMachine {
         return this.price;
     }
 
+    public int getSizeS(){
+        return SIZE_S_PRICR;
+    }
+
+    public int getSizeM(){
+        return SIZE_M_PRICR;
+    }
+
+    public int getSizeL(){
+        return SIZE_L_PRICR;
+    }
+
+    public int getFinalprice(){
+        return this.finalprice;
+    }
+
+    public int getPresentSize(){
+        return this.presentSize;
+    }
+
     public Coffee getCoffee(){
         for (Coffee type : Coffee.values()) {
             if(type.toString().equals(typeCoffee)){
@@ -154,6 +209,12 @@ public class CoffeeMachine {
             }
         }
         return null;
+    }
+    public void setFinalPrice(int finalPrice){
+        this.finalprice = finalPrice;
+    }
+    public void setPresentSize(int present){
+        this.presentSize = present;
     }
     public void setPrice(int price){
         this.price = price;

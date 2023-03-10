@@ -1,3 +1,5 @@
+
+
 import javax.swing.*;
 import java.io.File;
 public class ImageFiles {
@@ -20,8 +22,7 @@ public class ImageFiles {
         tur = new ImageIcon(((new ImageIcon(getTurtlePath()).getImage()).getScaledInstance( 60, 60, java.awt.Image.SCALE_SMOOTH)));
     }
     public JLabel getLatteLabel(){
-        return this.latte;
-    }
+        return this.latte;}
     public JLabel getCapuccino(){
         return this.capuccino;
     }
@@ -44,9 +45,7 @@ public class ImageFiles {
         return this.L;
     }
 
-    public String getLatteAbsolutePath(){
-        return this.latteFile.getAbsolutePath();
-    }
+    public String getLatteAbsolutePath(){return this.latteFile.getAbsolutePath();}
     public String getCapuccinoPath(){
         return this.capuccinoFile.getAbsolutePath();
     }
