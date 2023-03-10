@@ -235,6 +235,9 @@ public class CoffeeMachine {
     public void setCoffee(String coffee){
        this.typeCoffee = coffee;
     }
+    public void setWithdrawMoney(){
+        this.machineMoney = 0;
+    }
 
     public void setWater(int water){
         this.water = water;

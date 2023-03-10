@@ -46,7 +46,7 @@ public class ButtonStyle{
             });
             return button;
         }
-    public JButton fillButton(JPanel showPanel, JPanel hidePanel1){
+    public JButton fillButton(JPanel showPanel, JPanel hidePanel1, JLabel getWater, JLabel getMilk, JLabel getBeans, JLabel getCups, JLabel getCash){
         JButton fillbutton = new JButton();
         fillbutton.setText("Fill");
         fillbutton.addActionListener(new ActionListener() {
@@ -54,6 +54,11 @@ public class ButtonStyle{
             public void actionPerformed(ActionEvent e) {
                 showPanel.setVisible(true);
                 hidePanel1.setVisible(false);
+                getWater.setText(Integer.toString(coffee.getWater()));
+                getMilk.setText(Integer.toString(coffee.getMilk()));
+                getBeans.setText(Integer.toString(coffee.getBeans()));
+                getCups.setText(Integer.toString(coffee.getCups()));
+                getCash.setText(Integer.toString(coffee.getMachineMoney()));
             }
         });
         return fillbutton;
@@ -179,9 +184,9 @@ public class ButtonStyle{
         });
         return sizeLButton;
     }
-    public JButton finalBuyButton(){
+    public JButton finalBuyButton(JFrame message){
         JButton finalbuyButton = new JButton("BUY");
-        JFrame message = new JFrame();
+//        JFrame message = new JFrame();
         finalbuyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -259,5 +264,38 @@ public class ButtonStyle{
             }
         });
         return finalbuyButton;
+    }
+
+    public JButton withdrawButton(JLabel getCash){
+        JButton withdraw = new JButton();
+        withdraw.setText("WITHDRAW");
+        withdraw.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                coffee.setWithdrawMoney();
+                getCash.setText(Integer.toString(coffee.getMachineMoney()));
+
+            }
+        });
+        return withdraw;
+    }
+
+    public JButton fillStock(JLabel getWater, JLabel getMilk, JLabel getBeans, JLabel getCups){
+        JButton fill = new JButton();
+        fill.setText("FILL");
+        fill.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                coffee.setWater(1500);
+                coffee.setMilk(500);
+                coffee.setBeans(200);
+                coffee.setCups(20);
+                getWater.setText(Integer.toString(coffee.getWater()));
+                getMilk.setText(Integer.toString(coffee.getMilk()));
+                getBeans.setText(Integer.toString(coffee.getBeans()));
+                getCups.setText(Integer.toString(coffee.getCups()));
+            }
+        });
+        return fill;
     }
 }
