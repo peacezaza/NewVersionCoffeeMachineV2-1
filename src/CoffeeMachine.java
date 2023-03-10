@@ -17,21 +17,23 @@ public class CoffeeMachine {
     static final int SIZE_S_PRICR = 0;
     static final int SIZE_M_PRICR = 5;
     static final int SIZE_L_PRICR = 10;
+    private int machineMoney = 0;
     private int water;
     private int milk;
     private int beans;
     private int cups;
-    private int cash;
     private int price;
     private int finalprice;
     private int presentSize;
+    private int userMoney;
     private String typeCoffee;
-    CoffeeMachine(int water, int milk, int beans, int cups, int cash) {
+    private String sizeCoffee;
+
+    CoffeeMachine(int water, int milk, int beans, int cups) {
         this.water = water;
         this.milk = milk;
         this.beans = beans;
         this.cups = cups;
-        this.cash = cash;
     }
 
 
@@ -41,20 +43,20 @@ public class CoffeeMachine {
                 beans >= beansNeeded &&
                 cups >= 1;
     }
-    public void EspressoNeed() {
-        canMakeCoffee(getESPRESSO_WATER_ML_PER_CUP(),
+    public boolean EspressoNeed() {
+        return canMakeCoffee(getESPRESSO_WATER_ML_PER_CUP(),
                 getESPRESSO_MILK_ML_PER_CUP(),
                 getESPRESSO_BEANS_G_PER_CUP());
     }
 
-    public void LatteNeed() {
-        canMakeCoffee(getLATTE_WATER_ML_PER_CUP(),
+    public boolean LatteNeed() {
+        return canMakeCoffee(getLATTE_WATER_ML_PER_CUP(),
                 getLATTE_MILK_ML_PER_CUP(),
                 getLATTE_BEANS_G_PER_CUP());
     }
 
-    public void CappuccinoNeed() {
-        canMakeCoffee(getCAPPUCCINO_WATER_ML_PER_CUP(),
+    public boolean CappuccinoNeed() {
+        return canMakeCoffee(getCAPPUCCINO_WATER_ML_PER_CUP(),
                 getCAPPUCCINO_MILK_ML_PER_CUP(),
                 getCAPPUCCINO_BEANS_G_PER_CUP());
     }
@@ -84,9 +86,8 @@ public class CoffeeMachine {
         this.milk -= milkNeeded;
         this.beans -= beansNeeded;
         this.cups--;
-        this.cash += price;
+        this.machineMoney += price;
     }
-
     public StringBuilder notEnough(int waterNeeded, int milkNeeded, int beansNeeded){
         StringBuilder sb = new StringBuilder();
         if (water < waterNeeded) {
@@ -174,10 +175,6 @@ public class CoffeeMachine {
         return this.cups;
     }
 
-    public int getCash(){
-        return this.cash;
-    }
-
     public int getPrice(){
         return this.price;
     }
@@ -201,6 +198,16 @@ public class CoffeeMachine {
     public int getPresentSize(){
         return this.presentSize;
     }
+    public int getUserMoney(){
+        return this.userMoney;
+    }
+
+    public int getMachineMoney(){
+        return  this.machineMoney;
+    }
+    public String getSizeCoffee(){
+        return this.sizeCoffee;
+    }
 
     public Coffee getCoffee(){
         for (Coffee type : Coffee.values()) {
@@ -209,6 +216,12 @@ public class CoffeeMachine {
             }
         }
         return null;
+    }
+    public void setSizeCoffee(String size){
+        this.sizeCoffee = size;
+    }
+    public void setUserMoney(int usermoney){
+        this.userMoney = usermoney;
     }
     public void setFinalPrice(int finalPrice){
         this.finalprice = finalPrice;
@@ -237,10 +250,6 @@ public class CoffeeMachine {
 
     public void setCups(int cups){
        this.cups = cups;
-    }
-
-    public void setCash(int cash){
-       this.cash = cash;
     }
 
     public void doFillingAddedWater(int addedWater){

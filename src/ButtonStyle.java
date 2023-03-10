@@ -42,7 +42,6 @@ public class ButtonStyle{
                     else{
                         JOptionPane.showMessageDialog(panel, "Please, Select one of the option", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
-
                 }
             });
             return button;
@@ -66,6 +65,7 @@ public class ButtonStyle{
         sizeSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                coffee.setSizeCoffee("Size S");
                 coffee.setFinalPrice(coffee.getPrice()+coffee.getPresentSize());
                 price.setText("฿ " + (coffee.getPrice()+coffee.getPresentSize()));
             }
@@ -93,7 +93,6 @@ public class ButtonStyle{
                 if(checkClicked == 0){
                     sizeSButton.setBackground(color);
                 }
-
             }
         });
         return sizeSButton;
@@ -105,6 +104,7 @@ public class ButtonStyle{
         sizeMButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                coffee.setSizeCoffee("Size M");
                 coffee.setFinalPrice(coffee.getPrice()+coffee.getPresentSize());
                 price.setText("฿ " + (coffee.getPrice()+coffee.getPresentSize()));
             }
@@ -148,6 +148,7 @@ public class ButtonStyle{
         sizeLButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                coffee.setSizeCoffee("Size L");
                 coffee.setFinalPrice(coffee.getPrice()+coffee.getPresentSize());
                 price.setText("฿ " + (coffee.getPrice()+coffee.getPresentSize()));
             }
@@ -184,26 +185,77 @@ public class ButtonStyle{
         finalbuyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                switch (coffee.getCoffee()) {
-                    case ESPRESSO :
-                        coffee.makeEspresso();
-                        break;
-                    case LATTE :
-                        coffee.makeLatte();
-                        break;
-                    case CAPPUCCINO:
-                        coffee.makeCappuccino();
-                        break;
-                    default:{}
+                if(checkClicked == 0){
+                    JOptionPane.showMessageDialog(message,"Please Select Size","Alert",JOptionPane.WARNING_MESSAGE);
+                }else{
+                    switch (coffee.getCoffee()) {
+                        case ESPRESSO :
+                            if(coffee.EspressoNeed()){
+                                JOptionPane.showMessageDialog(message, "I have enough resources, making you a coffee!", "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                try {
+                                    String userPriceText = JOptionPane.showInputDialog(message,"Enter Money");
+                                    coffee.setUserMoney(Integer.parseInt(userPriceText));
+                                    if(coffee.getUserMoney() - coffee.getFinalprice() < 0){
+                                        JOptionPane.showMessageDialog(message,"Not Enough Money!","Alert",JOptionPane.WARNING_MESSAGE);
+                                    }else{
+                                        JOptionPane.showMessageDialog(message, "Change : " + (coffee.getUserMoney() - coffee.getFinalprice()) , "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(message, "Buy " + coffee.getCoffee() + " " + coffee.getSizeCoffee() + " Successful!" , "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                        coffee.makeEspresso();
+                                    }
+                                }catch (NumberFormatException exception){
+                                    JOptionPane.showMessageDialog(message, "Invalid Input!", "Complete!", JOptionPane.ERROR_MESSAGE);
+                                }
+
+                            }else{
+                                StringBuilder need  = coffee.notEnough(coffee.getESPRESSO_WATER_ML_PER_CUP(),coffee.getESPRESSO_MILK_ML_PER_CUP(),coffee.getESPRESSO_BEANS_G_PER_CUP());
+                                JOptionPane.showMessageDialog(message, "Sorry, not enough " + need.toString(), "WARNING", JOptionPane.WARNING_MESSAGE);
+                            }
+                            break;
+                        case LATTE :
+                            if(coffee.LatteNeed()){
+                                JOptionPane.showMessageDialog(message, "I have enough resources, making you a coffee!", "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                try {
+                                    String userPriceText = JOptionPane.showInputDialog(message,"Enter Money");
+                                    coffee.setUserMoney(Integer.parseInt(userPriceText));
+                                    if(coffee.getUserMoney() - coffee.getFinalprice() < 0){
+                                        JOptionPane.showMessageDialog(message,"Not Enough Money!","Alert",JOptionPane.WARNING_MESSAGE);
+                                    }else{
+                                        JOptionPane.showMessageDialog(message, "Change : " + (coffee.getUserMoney() - coffee.getFinalprice()) , "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(message, "Buy " + coffee.getCoffee() + " " + coffee.getSizeCoffee() + " Successful!" , "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                        coffee.makeLatte();
+                                    }
+                                }catch (NumberFormatException exception){
+                                    JOptionPane.showMessageDialog(message, "Invalid Input!", "Complete!", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }else{
+                                StringBuilder need  = coffee.notEnough(coffee.getLATTE_WATER_ML_PER_CUP(),coffee.getLATTE_MILK_ML_PER_CUP(),coffee.getLATTE_BEANS_G_PER_CUP());
+                                JOptionPane.showMessageDialog(message, "Sorry, not enough " + need.toString(), "WARNING", JOptionPane.WARNING_MESSAGE);
+                            }
+                            break;
+                        case CAPPUCCINO:
+                            if(coffee.CappuccinoNeed()){
+                                JOptionPane.showMessageDialog(message, "I have enough resources, making you a coffee!", "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                try {
+                                    String userPriceText = JOptionPane.showInputDialog(message,"Enter Money");
+                                    coffee.setUserMoney(Integer.parseInt(userPriceText));
+                                    if(coffee.getUserMoney() - coffee.getFinalprice() < 0){
+                                        JOptionPane.showMessageDialog(message,"Not Enough Money!","Alert",JOptionPane.WARNING_MESSAGE);
+                                    }else{
+                                        JOptionPane.showMessageDialog(message, "Change : " + (coffee.getUserMoney() - coffee.getFinalprice()) , "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(message, "Buy " + coffee.getCoffee() + " " + coffee.getSizeCoffee() + " Successful!" , "Complete!", JOptionPane.INFORMATION_MESSAGE);
+                                        coffee.makeCappuccino();
+                                    }
+                                }catch (NumberFormatException exception){
+                                    JOptionPane.showMessageDialog(message, "Invalid Input!", "Complete!", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }else{
+                                StringBuilder need  = coffee.notEnough(coffee.getCAPPUCCINO_WATER_ML_PER_CUP(),coffee.getCAPPUCCINO_MILK_ML_PER_CUP(),coffee.getCAPPUCCINO_BEANS_G_PER_CUP());
+                                JOptionPane.showMessageDialog(message, "Sorry, not enough " + need.toString(), "WARNING", JOptionPane.WARNING_MESSAGE);
+                            }
+                            break;
+                        default:{}
+                    }
                 }
-                //Please Fix
-//                if(coffee.canMakeCoffee(coffee.getWater(),coffee.getMilk(),coffee.getBeans())){
-//                    JOptionPane.showMessageDialog(message, "I have enough resources, making you a coffee!", "Complete!", JOptionPane.INFORMATION_MESSAGE);
-//
-//                }else{
-//                    StringBuilder need  = coffee.notEnough(coffee.getWater(),coffee.getMilk(),coffee.getBeans());
-//                    JOptionPane.showMessageDialog(message, "Sorry, not enough " + need.toString(), "WARNING", JOptionPane.WARNING_MESSAGE);
-//                }
             }
         });
         return finalbuyButton;

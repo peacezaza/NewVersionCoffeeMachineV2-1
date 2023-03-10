@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class MainFrame{
     private JFrame frame = new JFrame("CoffeeMachine");
     private Color color = new Color(226,218,196,255);
-    private CoffeeMachine coffee = new CoffeeMachine();
+    private CoffeeMachine coffee = new CoffeeMachine(1000,500,100,10);
     private JPanel panelForHoldEveryElementInFirstPage;
     private JPanel SizePageMain = new JPanel();
     private JPanel panelForHoldEveryElementInFillPage = new JPanel();
@@ -130,7 +130,10 @@ public class MainFrame{
 //        Set Background for panel
         priceMainPanel.setBackground(color);
         buyCoffeeButton.setBackground(color);
-        priceMainPanel.setBackground(color);
+        priceShowPanel.setBackground(color);
+        SizePageMain.setBackground(color);
+        BackPanel.setBackground(color);
+        SizeSelectPanel.setBackground(color);
 
 
 //        Add Button to the Panel
@@ -157,16 +160,63 @@ public class MainFrame{
         frame.add(SizePageMain);
     }
     private void setFillPage(){
-//        Create Object
+//        panelForHoldEveryElementInFillPage.setVisible(false);
 
+
+//        Create Object
         ButtonStyle button = new ButtonStyle(coffee);
-        panelForHoldEveryElementInFillPage.setVisible(false);
+
 //        Create panel
         JPanel panelForBackButton = new JPanel();
+        JPanel panelForHoldWaterText = new JPanel();
+        JPanel panelForHoldMilkText = new JPanel();
+        JPanel panelForHoldBeansText = new JPanel();
+        JPanel panelForHoldCupsText = new JPanel();
+        JPanel panelForHoldCashText = new JPanel();
+        JPanel panelForWithdrawCash = new JPanel();
+        JPanel panelForFillButton = new JPanel();
+
+
+//        Set layout for panel
+//        panelForHoldWaterText.setLayout(new );
+        panelForHoldEveryElementInFillPage.setLayout(new BoxLayout(panelForHoldEveryElementInFillPage,BoxLayout.Y_AXIS));
+
+//        Create JLabel for water, mlik, beans, cups cash
+        JLabel water = new JLabel("Water / ml : ");
+        JLabel getWater = new JLabel(String.valueOf(coffee.getWater()));
+
+        JLabel milk = new JLabel("milk / ml : ");
+        JLabel getMilk = new JLabel(String.valueOf(coffee.getMilk()));
+
+        JLabel beans = new JLabel("coffee /grams : ");
+        JLabel getBeans = new JLabel(String.valueOf(coffee.getBeans()));
+
+        JLabel cups = new JLabel("disposable cups : ");
+        JLabel getCups = new JLabel(String.valueOf(coffee.getCups()));
+
+        JLabel cash = new JLabel("Cash : ");
+
 
 //        Add Object to panel
+        panelForHoldWaterText.add(water);panelForHoldWaterText.add(getWater);
+        panelForHoldMilkText.add(milk);panelForHoldMilkText.add(getMilk);
+        panelForHoldBeansText.add(beans);panelForHoldBeansText.add(getBeans);
+        panelForHoldCupsText.add(cups);panelForHoldCupsText.add(getCups);
+        panelForHoldCashText.add(cash);
         panelForBackButton.add(button.backButton(panelForHoldEveryElementInFirstPage, SizePageMain, panelForHoldEveryElementInFillPage));
+
+
+//        Add panel to main panel of fill page
+        panelForHoldEveryElementInFillPage.add(panelForHoldWaterText);
+        panelForHoldEveryElementInFillPage.add(panelForHoldMilkText);
+        panelForHoldEveryElementInFillPage.add(panelForHoldBeansText);
+        panelForHoldEveryElementInFillPage.add(panelForHoldCupsText);
+        panelForHoldEveryElementInFillPage.add(panelForHoldCashText);
         panelForHoldEveryElementInFillPage.add(panelForBackButton);
+
+
+        //        Set color
+        panelForBackButton.setBackground(color);
 
 
 //        Add panel to the frame
