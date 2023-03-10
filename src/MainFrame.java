@@ -1,5 +1,4 @@
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,17 +6,12 @@ import java.awt.event.*;
 public class MainFrame{
     private JFrame frame = new JFrame("CoffeeMachine");
     private Color color = new Color(226,218,196,255);
-<<<<<<< HEAD
-    private CoffeeMachine coffee = new CoffeeMachine(1000,500,100,10,0);
+    private CoffeeMachine coffee = new CoffeeMachine();
     private JPanel panelForHoldEveryElementInFirstPage;
     private JPanel SizePageMain = new JPanel();
     private JPanel panelForHoldEveryElementInFillPage = new JPanel();
     private JLabel price = new JLabel("฿ " + coffee.getPrice());
-=======
-    private JPanel panelForHoldEveryElementInFirstPage;
-    private JPanel SizePageMain = new JPanel();
-    private JPanel panelForHoldEveryElementInFillPage = new JPanel();
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
+
     public MainFrame(){
         setFirstPage();
         setSelectSizePage();
@@ -73,15 +67,8 @@ public class MainFrame{
 
 //        Create Object of Images, checkboxs, buttons
         ImageFiles coffeeCupImage = new ImageFiles();
-<<<<<<< HEAD
         ButtonStyle buttonStyle = new ButtonStyle(coffee);
         CheckBoxes checkBoxes = new CheckBoxes(coffee);
-=======
-        ButtonStyle buttonStyle = new ButtonStyle();
-        CheckBoxes checkBoxes = new CheckBoxes();
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
-
-
 
 //        Create Panels
         panelForHoldEveryElementInFirstPage = new JPanel();
@@ -107,12 +94,7 @@ public class MainFrame{
         panelForCheckBoxes.add(Box.createRigidArea(new Dimension(0,60)));
         panelForButton.add(buttonStyle.buyButton(panelForHoldEveryElementInFirstPage, SizePageMain, checkBoxes));
         panelForButton.add(buttonStyle.fillButton(panelForHoldEveryElementInFillPage,panelForHoldEveryElementInFirstPage));
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
 //        Adding Panels to Main Panel for holding Every Panels
         panelForHoldEveryElementInFirstPage.add(panelForcups);
         panelForHoldEveryElementInFirstPage.add(panelForCheckBoxes);
@@ -122,22 +104,12 @@ public class MainFrame{
         panelForButton.setBackground(color);
         panelForHoldEveryElementInFirstPage.setBackground(color);
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
 //        Adding main panel to frame
         frame.add(panelForHoldEveryElementInFirstPage);
     }
     private void setSelectSizePage(){
 //        Create Object
-<<<<<<< HEAD
         ButtonStyle buttonStyle = new ButtonStyle(coffee);
-=======
-        CoffeeMachine coffee = new CoffeeMachine();
-        ButtonStyle buttonStyle = new ButtonStyle();
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
 
 //        Create Panel
         JPanel SizeSelectPanel = new JPanel();
@@ -148,12 +120,6 @@ public class MainFrame{
 
 //        Create Label
         JLabel priceText = new JLabel("Price");
-<<<<<<< HEAD
-=======
-        JLabel price = new JLabel("฿ " + coffee.getPrice());
-
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
-
 //        Set Layout for panel
         SizeSelectPanel.setLayout(new FlowLayout());
         SizePageMain.setLayout(new BoxLayout(SizePageMain,BoxLayout.Y_AXIS));
@@ -168,15 +134,9 @@ public class MainFrame{
 
 
 //        Add Button to the Panel
-<<<<<<< HEAD
         SizeSelectPanel.add(buttonStyle.SizeSButton(price));
         SizeSelectPanel.add(buttonStyle.SizeMButton(price));
         SizeSelectPanel.add(buttonStyle.SizeLButton(price));
-=======
-        SizeSelectPanel.add(buttonStyle.SizeSButton());
-        SizeSelectPanel.add(buttonStyle.SizeMButton());
-        SizeSelectPanel.add(buttonStyle.SizeLButton());
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
         BackPanel.add(buttonStyle.backButton(panelForHoldEveryElementInFirstPage, SizePageMain, panelForHoldEveryElementInFillPage));
         priceShowPanel.add(priceText);
         priceShowPanel.add(Box.createRigidArea(new Dimension(0,15)));
@@ -198,13 +158,9 @@ public class MainFrame{
     }
     private void setFillPage(){
 //        Create Object
-<<<<<<< HEAD
+
         ButtonStyle button = new ButtonStyle(coffee);
         panelForHoldEveryElementInFillPage.setVisible(false);
-=======
-        ButtonStyle button = new ButtonStyle();
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
-
 //        Create panel
         JPanel panelForBackButton = new JPanel();
 

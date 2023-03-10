@@ -1,22 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
-<<<<<<< HEAD
 import java.awt.event.*;
 import javax.swing.border.Border;
-=======
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
 
 public class ButtonStyle{
     private ImageFiles image = new ImageFiles();
     private Border emptyBorder = BorderFactory.createEmptyBorder();
     private Color color = new Color(226,218,196,255);
-    private int checkClicked=0;
     private JButton sizeSButton = new JButton();
     private JButton sizeMButton = new JButton();
     private JButton sizeLButton = new JButton();
     private CoffeeMachine coffee;
+    private int checkClicked=0;
     public ButtonStyle(CoffeeMachine coffee){
         this.coffee = coffee;
     }
@@ -29,20 +24,11 @@ public class ButtonStyle{
                 showPanel.setVisible(true);
                 hidePanel1.setVisible(false);
                 hidePanel2.setVisible(false);
-<<<<<<< HEAD
                 coffee.setPrice(0);
-=======
-
-
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
             }
         });
         return backButton;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
     public JButton buyButton(JPanel panel, JPanel panelForSelectionSizePage,CheckBoxes checkBoxes){
             JButton button = new JButton();
             button.setText("BUY");
@@ -77,7 +63,6 @@ public class ButtonStyle{
         sizeSButton.setIcon(image.getSizeS());
         sizeSButton.setBorder(emptyBorder);
         sizeSButton.setBackground(color);
-<<<<<<< HEAD
         sizeSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -111,11 +96,6 @@ public class ButtonStyle{
 
             }
         });
-
-=======
-        sizeSButton.addActionListener();
->>>>>>> b654d38b7c057a5c3e6d5ad5e180ece722fa1510
-
         return sizeSButton;
     }
     public JButton SizeMButton(JLabel price){

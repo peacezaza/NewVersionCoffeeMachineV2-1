@@ -29,7 +29,6 @@ public class CheckBoxes {
         });
         return this.checkBox1;
     }
-
     public JCheckBox createCheckBox2(JLabel price){
         this.checkBox2.setText("CAPPUCCINO");
         this.checkBox2.setBackground(color);
@@ -61,6 +60,4 @@ public class CheckBoxes {
         });
         return this.checkBox3;
     }
-
-
 }
